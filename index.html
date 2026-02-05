@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- ==========================================================================
+         ESPACIO PARA GOOGLE ANALYTICS
+         Instrucción: Cuando tengas tu código de Google Analytics (empieza con <script async...),
+         borrá este comentario y pegalo acá abajo 👇
+         ========================================================================== -->
+    
+    <!-- ACÁ VA TU CÓDIGO DE ANALYTICS -->
+
+    <!-- ========================================================================== -->
+
+    <!-- SEO OPTIMIZADO -->
+    <title>STJ Tecnología | Servicio Técnico Especializado en Junín</title>
+    <meta name="description" content="Servicio técnico con 15 años de experiencia en Junín. Laboratorio propio de electrónica. Reparación de PC, Notebooks y Consolas. Planes de mantenimiento para empresas.">
+    <meta name="keywords" content="reparación pc junin, arreglo notebooks, servicio técnico apple junin, consolas, laboratorio electronica junin, stj tecnologia, ataliva roca 91, mantenimiento empresas">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="STJ Tecnología - Servicio Técnico Profesional">
+    <meta property="og:description" content="Recuperamos tu equipo en Junín. Laboratorio propio y 15 años de experiencia. Diagnóstico especializado.">
+    <meta property="og:image" content="logo.jpeg">
+    <meta property="og:type" content="website">
+    
+    <!-- Datos Estructurados (Schema.org) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ComputerStore",
+      "name": "STJ Tecnología",
+      "image": "logo.jpeg",
+      "description": "Laboratorio de Electrónica y Servicio Técnico en Junín. Mantenimiento IT para empresas.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Ataliva Roca 91",
+        "addressLocality": "Junín",
+        "addressRegion": "Buenos Aires",
+        "postalCode": "6000",
+        "addressCountry": "AR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "-34.5838", 
+        "longitude": "-60.9433" 
+      },
+      "telephone": "+5492364538426",
+      "priceRange": "$$"
+    }
+    </script>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .glass-nav { background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(30, 41, 59, 0.5); }
+        .text-glow { text-shadow: 0 0 20px rgba(59, 130, 246, 0.5); }
+        /* Animación suave para cambio de página */
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-100 selection:bg-blue-500 selection:text-white">
+
+    <!-- NAVBAR -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 py-5 bg-transparent">
+        <div class="container mx-auto px-4 md:px-6 flex justify-between items-center">
+            
+            <!-- LOGO FLOTANTE -->
+            <a href="#" onclick="showHome()" class="group relative" aria-label="Volver al inicio">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-cyan-500 rounded-xl blur opacity-30 group-hover:opacity-80 transition duration-500"></div>
+                <img src="logo.jpeg" alt="STJ Tecnología Junín Logo" class="relative h-20 w-20 rounded-xl border-2 border-slate-700/50 shadow-2xl shadow-black/50 group-hover:scale-105 transition-transform duration-300 object-cover bg-white">
+            </a>
+
+            <!-- Menú Escritorio -->
+            <div class="hidden md:flex items-center gap-6">
+                <button onclick="showHome(); scrollToSection('servicios')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Servicios</button>
+                <button onclick="showHome(); scrollToSection('laboratorio')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Laboratorio</button>
+                <button onclick="showHome(); scrollToSection('empresas')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Empresas</button>
+                <button onclick="showHome(); scrollToSection('ubicacion')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Ubicación</button>
+                
+                <a href="https://instagram.com/stjtecnologia" target="_blank" class="text-slate-400 hover:text-pink-500 transition-colors" aria-label="Instagram">
+                    <i data-lucide="instagram" class="w-6 h-6"></i>
+                </a>
+
+                <a href="https://wa.me/5492364538426" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-5 py-2 rounded-full shadow-lg shadow-blue-600/30 flex items-center gap-2 font-bold transition-transform hover:scale-105">
+                    <i data-lucide="message-circle" class="w-5 h-5"></i> Contacto
+                </a>
+            </div>
+
+            <!-- Botón Móvil -->
+            <button id="mobile-menu-btn" class="md:hidden text-slate-200 p-2" aria-label="Abrir Menú">
+                <i data-lucide="menu" class="w-8 h-8"></i>
+            </button>
+        </div>
+
+        <!-- Menú Móvil -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-800 border-b border-slate-700 shadow-xl flex-col p-4 animate-fade-in">
+            <button onclick="showHome(); scrollToSection('servicios')" class="mobile-link py-3 text-left text-slate-300 border-b border-slate-700/50">Servicios</button>
+            <button onclick="showHome(); scrollToSection('laboratorio')" class="mobile-link py-3 text-left text-slate-300 border-b border-slate-700/50">Laboratorio</button>
+            <button onclick="showHome(); scrollToSection('empresas')" class="mobile-link py-3 text-left text-slate-300 border-b border-slate-700/50">Empresas</button>
+            <button onclick="showHome(); scrollToSection('ubicacion')" class="mobile-link py-3 text-left text-slate-300 mb-4">Ubicación</button>
+            <a href="https://wa.me/5492364538426" target="_blank" class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg text-center font-bold">Enviar WhatsApp</a>
+        </div>
+    </nav>
+
+    <!-- =========================================
+         VISTA PRINCIPAL (LANDING PAGE)
+         ========================================= -->
+    <div id="landing-view" class="fade-in">
+        
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden">
+            <div class="absolute top-0 right-0 w-1/2 h-1/2 bg-blue-600/10 blur-[120px] rounded-full pointer-events-none animate-pulse"></div>
+            <div class="absolute bottom-0 left-0 w-1/3 h-1/3 bg-cyan-500/10 blur-[100px] rounded-full pointer-events-none"></div>
+
+            <div class="container mx-auto px-4 md:px-6 relative z-10">
+                <div class="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-12 text-center md:text-left">
+                    <div class="flex-1 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-sm font-medium mx-auto md:mx-0">
+                            <span class="relative flex h-2 w-2">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                            </span>
+                            Junín, Buenos Aires
+                        </div>
+                        <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                            Tecnología reparada <br />
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-cyan-300 text-glow">
+                              a nivel componente.
+                            </span>
+                        </h1>
+                        <p class="text-lg text-slate-400 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                            No somos simples "cambia piezas". En STJ Tecnología contamos con <strong>laboratorio propio</strong> para reparaciones complejas que otros talleres tercerizan.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start pt-4">
+                            <a href="https://wa.me/5492364538426?text=Hola%20Tavo,%20quisiera%20coordinar%20una%20revision%20de%20mi%20equipo" target="_blank" class="bg-blue-600 hover:bg-blue-500 text-white px-8 py-4 rounded-xl text-lg font-bold shadow-xl shadow-blue-600/20 transition-transform hover:-translate-y-1 flex items-center justify-center gap-2">
+                                <i data-lucide="stethoscope"></i> Solicitar Revisión
+                            </a>
+                            <button onclick="scrollToSection('servicios')" class="px-8 py-4 rounded-xl text-slate-300 border border-slate-700 hover:bg-slate-800 hover:text-white transition-all font-medium">
+                                Ver Soluciones
+                            </button>
+                        </div>
+                    </div>
+                    <!-- Visual Hero -->
+                    <div class="flex-1 w-full max-w-md relative hidden md:block">
+                        <div class="absolute inset-0 bg-gradient-to-tr from-blue-600 to-cyan-400 rounded-2xl blur-2xl opacity-20 animate-pulse"></div>
+                        <div class="relative bg-slate-800/80 border border-slate-700 backdrop-blur-sm p-6 rounded-2xl shadow-2xl">
+                            <div class="flex justify-between items-center mb-6 border-b border-slate-700 pb-4">
+                                <span class="text-sm font-bold text-white uppercase tracking-wider">Orden #STJ-9241</span>
+                                <span class="text-xs text-green-400 font-mono flex items-center gap-1"><i data-lucide="check-circle" class="w-3 h-3"></i> LISTO</span>
+                            </div>
+                            <div class="space-y-4 font-mono text-sm">
+                                <div class="flex items-center gap-3 text-slate-400"><i data-lucide="alert-triangle" class="w-4 h-4 text-yellow-500"></i> <span>Falla: No da video</span></div>
+                                <div class="h-px bg-slate-700 my-2"></div>
+                                <div class="flex items-center gap-3 text-blue-400"><i data-lucide="microscope" class="w-4 h-4"></i> <span>Reballing GPU</span></div>
+                                <div class="flex items-center gap-3 text-blue-400"><i data-lucide="zap" class="w-4 h-4"></i> <span>Corto en VCORE reparado</span></div>
+                                <div class="flex items-center gap-3 text-blue-400"><i data-lucide="thermometer" class="w-4 h-4"></i> <span>Mantenimiento Térmico</span></div>
+                                <div class="mt-4 bg-green-500/10 border border-green-500/20 p-2 rounded text-green-400 text-center font-bold">EQUIPO RECUPERADO</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ESTADÍSTICAS -->
+        <section class="border-y border-slate-800 bg-slate-900/50 py-10">
+            <div class="container mx-auto px-4">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+                    <div><p class="text-3xl font-bold text-white mb-1">+15 Años</p><p class="text-sm text-slate-500 uppercase tracking-wider">Experiencia</p></div>
+                    <div><p class="text-3xl font-bold text-white mb-1 text-blue-400">+3.000</p><p class="text-sm text-slate-500 uppercase tracking-wider">Reparaciones</p></div>
+                    <div><p class="text-3xl font-bold text-white mb-1">100%</p><p class="text-sm text-slate-500 uppercase tracking-wider">Garantía</p></div>
+                    <div><p class="text-3xl font-bold text-white mb-1">Junín</p><p class="text-sm text-slate-500 uppercase tracking-wider">Ataliva Roca 91</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SERVICIOS -->
+        <section id="servicios" class="py-20 bg-slate-900">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="text-center max-w-2xl mx-auto mb-16">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Soluciones Integrales</h2>
+                    <p class="text-slate-400">Cubrimos todas las necesidades de tu hogar y oficina.</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div class="group bg-slate-800/50 border border-slate-700 hover:border-blue-500/50 rounded-2xl p-8 transition-all hover:bg-slate-800 hover:shadow-2xl">
+                        <div class="w-14 h-14 bg-blue-900/30 text-blue-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><i data-lucide="hard-drive" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Upgrade PC / Notebook</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">¿Equipo lento? Instalación de discos SSD, ampliación de RAM y clonación de sistema sin perder datos.</p>
+                    </div>
+                    <div class="group bg-slate-800/50 border border-slate-700 hover:border-green-500/50 rounded-2xl p-8 transition-all hover:bg-slate-800 hover:shadow-2xl">
+                        <div class="w-14 h-14 bg-green-900/30 text-green-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><i data-lucide="gamepad-2" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Consolas de Videojuegos</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Mantenimiento de PS4, PS5, Xbox. Cambio de pasta térmica, reparación de HDMI, fallas de encendido.</p>
+                    </div>
+                    <div class="group bg-slate-800/50 border border-slate-700 hover:border-purple-500/50 rounded-2xl p-8 transition-all hover:bg-slate-800 hover:shadow-2xl">
+                        <div class="w-14 h-14 bg-purple-900/30 text-purple-400 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform"><i data-lucide="cpu" class="w-8 h-8"></i></div>
+                        <h3 class="text-xl font-bold text-white mb-3">Micro-soldadura</h3>
+                        <p class="text-slate-400 mb-6 text-sm leading-relaxed">Reparación a nivel componente de placas madre. Reballing, reemplazo de ICs y reparación de pistas.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LABORATORIO -->
+        <section id="laboratorio" class="py-20 bg-slate-950 border-t border-slate-800">
+            <div class="container mx-auto px-4 md:px-6">
+                <div class="flex flex-col md:flex-row gap-12 items-center">
+                    <div class="flex-1 space-y-6">
+                        <div class="inline-flex items-center gap-2 text-blue-400 font-bold uppercase tracking-widest text-sm">
+                            <i data-lucide="microscope" class="w-5 h-5"></i> Infraestructura Propia
+                        </div>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">Laboratorio Profesional</h2>
+                        <p class="text-lg text-slate-300">En STJ invertimos en tecnología. Contamos con instrumental óptico de precisión, estaciones de soldado y herramientas de diagnóstico avanzado.</p>
+                        <ul class="space-y-3 mt-4 text-slate-400">
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Microscopía Profesional.</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Diagnóstico de fallas electrónicas complejas.</li>
+                            <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-500 w-5 h-5"></i> Stock de repuestos para agilizar tiempos.</li>
+                        </ul>
+                    </div>
+                    <div class="flex-1 w-full">
+                        <div class="relative rounded-2xl overflow-hidden border border-slate-700 shadow-2xl bg-slate-900 aspect-video flex items-center justify-center group">
+                            <img src="microscopio.jpeg" alt="Laboratorio STJ" class="absolute inset-0 w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                            <div class="relative z-10 text-center bg-black/50 p-6 rounded-xl backdrop-blur-sm border border-white/10">
+                                <i data-lucide="scan-eye" class="w-12 h-12 text-blue-400 mx-auto mb-2"></i>
+                                <p class="text-white font-bold">Laboratorio STJ</p>
+                                <p class="text-xs text-slate-300">Precisión y Profesionalismo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPINIONES -->
+        <section id="opiniones" class="py-20 bg-slate-900 border-t border-slate-800">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl font-bold text-center text-white mb-12">Lo que dicen nuestros clientes</h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500/30 transition-colors">
+                        <div class="flex gap-1 text-yellow-500 mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <p class="text-slate-300 italic mb-4">"Excelente atención. Llevé mi notebook que no prendía y me la devolvieron funcionando perfecto."</p>
+                        <p class="text-white font-bold text-sm">- Martín G.</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500/30 transition-colors">
+                        <div class="flex gap-1 text-yellow-500 mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <p class="text-slate-300 italic mb-4">"Muy recomendable el cambio a disco sólido. La computadora vuela ahora."</p>
+                        <p class="text-white font-bold text-sm">- Laura S.</p>
+                    </div>
+                    <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500/30 transition-colors">
+                        <div class="flex gap-1 text-yellow-500 mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+                        <p class="text-slate-300 italic mb-4">"Me salvaron una PS4 que otros daban por muerta. Saben lo que hacen."</p>
+                        <p class="text-white font-bold text-sm">- Federico M.</p>
+                    </div>
+                </div>
+                <div class="text-center mt-8">
+                    <a href="https://g.page/r/Cfe1KxuJZx-eEAE/review" target="_blank" class="bg-blue-600/10 text-blue-400 hover:bg-blue-600 hover:text-white px-6 py-3 rounded-full transition-all text-sm font-bold border border-blue-500/20">
+                        <i data-lucide="star" class="inline w-4 h-4 mr-2 mb-1"></i>Dejanos tu opinión en Google
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- EMPRESAS (Sección Resumen) -->
+        <section id="empresas" class="py-20 relative overflow-hidden bg-slate-900">
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="bg-gradient-to-r from-slate-800 to-slate-900 rounded-3xl p-8 md:p-12 border border-slate-700 shadow-2xl flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1 space-y-6">
+                        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-wider">
+                            B2B / Corporativo
+                        </div>
+                        <h2 class="text-3xl font-bold text-white">Soporte IT para Empresas</h2>
+                        <p class="text-slate-300 text-lg">
+                            Mantenimiento preventivo mensual para oficinas, estudios contables e inmobiliarias en Junín. Olvidate de los problemas técnicos.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4 mt-4">
+                            <button onclick="showPlanes()" class="inline-block bg-blue-600 text-white hover:bg-blue-500 px-6 py-3 rounded-lg font-bold shadow-lg transition-transform hover:-translate-y-1">
+                                Ver Planes y Precios
+                            </button>
+                            <a href="https://wa.me/5492364538426?text=Soy%20empresa%20y%20quiero%20abono" target="_blank" class="inline-block bg-white text-slate-900 hover:bg-slate-200 px-6 py-3 rounded-lg font-bold shadow-lg transition-transform hover:-translate-y-1">
+                                Contactar por WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section class="py-20 bg-slate-950 border-t border-slate-800">
+            <div class="container mx-auto px-4 md:px-6 max-w-4xl">
+                <h2 class="text-3xl font-bold text-center text-white mb-10">Preguntas Frecuentes</h2>
+                <div class="space-y-4">
+                    <div class="bg-slate-900 rounded-lg p-6 border border-slate-800">
+                        <h3 class="font-bold text-white text-lg flex items-center gap-2"><i data-lucide="help-circle" class="w-5 h-5 text-blue-500"></i> ¿La revisión tiene costo?</h3>
+                        <p class="text-slate-400 mt-2">Sí, el diagnóstico profesional en laboratorio tiene un costo mínimo (aprox $20.000) por el tiempo e instrumental utilizado.</p>
+                    </div>
+                    <div class="bg-slate-900 rounded-lg p-6 border border-slate-800">
+                        <h3 class="font-bold text-white text-lg flex items-center gap-2"><i data-lucide="help-circle" class="w-5 h-5 text-blue-500"></i> ¿Tienen garantía?</h3>
+                        <p class="text-slate-400 mt-2">Sí, 100% garantizado. Garantía escrita disponible a pedido del cliente.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div> <!-- Fin Landing View -->
+
+    <!-- =========================================
+         VISTA PLANES EMPRESAS (PÁGINA 2)
+         ========================================= -->
+    <div id="planes-view" class="hidden fade-in bg-slate-950 min-h-screen pt-32 pb-20">
+        <div class="container mx-auto px-4">
+            
+            <!-- Header Planes -->
+            <div class="text-center mb-16">
+                <button onclick="showHome()" class="mb-6 text-blue-400 hover:text-white flex items-center gap-2 mx-auto transition-colors"><i data-lucide="arrow-left" class="w-4 h-4"></i> Volver al Inicio</button>
+                <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-4">Planes de Mantenimiento</h1>
+                <p class="text-xl text-slate-400 max-w-2xl mx-auto">Solución local, ágil y de bajo costo operativo para tu parque informático en Junín.</p>
+            </div>
+
+            <!-- Modalidad -->
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-8 mb-16 max-w-4xl mx-auto">
+                <h3 class="text-2xl font-bold text-white mb-4 flex items-center gap-2"><i data-lucide="truck" class="text-blue-500"></i> Modalidad "Laboratorio Externo"</h3>
+                <p class="text-slate-300 mb-6">Para garantizar la máxima calidad en limpieza y testeos de estrés sin interrumpir tu oficina, trabajamos con retiro y entrega.</p>
+                <div class="grid md:grid-cols-3 gap-4 text-sm text-slate-400">
+                    <div class="bg-slate-800 p-4 rounded-lg"><strong class="text-white block mb-1">1. Retiro</strong> Coordinamos búsqueda de equipos en tu empresa.</div>
+                    <div class="bg-slate-800 p-4 rounded-lg"><strong class="text-white block mb-1">2. Taller</strong> Mantenimiento físico y lógico en laboratorio STJ.</div>
+                    <div class="bg-slate-800 p-4 rounded-lg"><strong class="text-white block mb-1">3. Devolución</strong> Reingreso del equipo listo para usar.</div>
+                </div>
+            </div>
+
+            <!-- Tarjetas de Precio -->
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
+                <!-- Plan Básico -->
+                <div class="bg-slate-900 border border-slate-700 rounded-3xl p-8 relative hover:border-blue-500 transition-colors">
+                    <h3 class="text-xl font-bold text-slate-300 mb-2">PLAN BÁSICO</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-extrabold text-white">$150.000</span>
+                        <span class="text-slate-500">/mes</span>
+                    </div>
+                    <p class="text-sm text-blue-400 font-bold mb-6 uppercase tracking-wide">Mantenimiento Rotativo</p>
+                    <ul class="space-y-4 text-slate-300 mb-8">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> Hasta <strong>3 equipos</strong> por mes.</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> Logística de retiro y entrega incluida.</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> Soporte ante incidencias críticas.</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-blue-500 w-5 h-5"></i> Limpieza profunda + Pasta térmica.</li>
+                    </ul>
+                    <a href="https://wa.me/5492364538426?text=Me%20interesa%20el%20Plan%20Basico%20Empresas" target="_blank" class="block w-full py-3 px-6 text-center rounded-xl border border-blue-600 text-blue-500 font-bold hover:bg-blue-600 hover:text-white transition-all">Contratar Básico</a>
+                </div>
+
+                <!-- Plan Intensivo -->
+                <div class="bg-gradient-to-b from-slate-800 to-slate-900 border border-blue-500 rounded-3xl p-8 relative shadow-2xl shadow-blue-900/20">
+                    <div class="absolute top-0 right-0 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-bl-xl rounded-tr-xl uppercase">Recomendado</div>
+                    <h3 class="text-xl font-bold text-white mb-2">PLAN INTENSIVO</h3>
+                    <div class="flex items-baseline gap-1 mb-6">
+                        <span class="text-4xl font-extrabold text-white">$200.000</span>
+                        <span class="text-slate-500">/mes</span>
+                    </div>
+                    <p class="text-sm text-blue-400 font-bold mb-6 uppercase tracking-wide">Mantenimiento Acelerado</p>
+                    <ul class="space-y-4 text-slate-300 mb-8">
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-400 w-5 h-5"></i> Hasta <strong>5 equipos</strong> por mes.</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-400 w-5 h-5"></i> <strong>Prioridad</strong> en taller.</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-400 w-5 h-5"></i> Mejor costo por equipo.</li>
+                        <li class="flex items-center gap-3"><i data-lucide="check" class="text-green-400 w-5 h-5"></i> Logística incluida.</li>
+                    </ul>
+                    <a href="https://wa.me/5492364538426?text=Me%20interesa%20el%20Plan%20Intensivo%20Empresas" target="_blank" class="block w-full py-3 px-6 text-center rounded-xl bg-blue-600 text-white font-bold hover:bg-blue-500 transition-all shadow-lg">Contratar Intensivo</a>
+                </div>
+            </div>
+
+            <!-- Comparativa -->
+            <div class="max-w-4xl mx-auto mb-16">
+                <h3 class="text-xl font-bold text-white mb-6 text-center">¿Por qué elegir un servicio local?</h3>
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse rounded-xl overflow-hidden">
+                        <thead>
+                            <tr class="bg-slate-800 text-slate-300">
+                                <th class="p-4">Concepto</th>
+                                <th class="p-4">Proveedor Remoto</th>
+                                <th class="p-4 text-blue-400 font-bold bg-slate-800/80">Propuesta STJ (Local)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="text-slate-400 text-sm">
+                            <tr class="border-b border-slate-800 bg-slate-900">
+                                <td class="p-4 font-medium text-white">Logística y Viáticos</td>
+                                <td class="p-4">Costo extra (Hotel, KM)</td>
+                                <td class="p-4 text-green-400 font-bold bg-slate-900/50">$0 (Bonificado)</td>
+                            </tr>
+                            <tr class="bg-slate-900">
+                                <td class="p-4 font-medium text-white">Tiempo de Respuesta</td>
+                                <td class="p-4">Lenta (depende de viaje)</td>
+                                <td class="p-4 text-green-400 font-bold bg-slate-900/50">Rápida (Local en Junín)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Términos -->
+            <div class="max-w-4xl mx-auto text-xs text-slate-500 border-t border-slate-800 pt-8">
+                <p class="mb-2"><strong>Términos y Condiciones:</strong></p>
+                <p>1. Repuestos: El abono cubre mano de obra e insumos de limpieza. Hardware roto se cotiza aparte.</p>
+                <p>2. Responsabilidad: El servicio garantiza limpieza y optimización. No nos responsabilizamos por fallas de componentes electrónicos posteriores debidas a vida útil agotada.</p>
+                <p>3. Validez: Presupuesto válido por 15 días.</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer id="ubicacion" class="bg-slate-950 pt-20 pb-10 border-t border-slate-800">
+        <div class="container mx-auto px-4 text-center md:text-left">
+            <div class="grid md:grid-cols-2 gap-12 items-start mb-16">
+                <div class="space-y-6">
+                    <div class="flex items-center justify-center md:justify-start gap-2">
+                         <img src="logo.jpeg" class="w-10 h-10 rounded-lg">
+                         <span class="text-2xl font-bold text-white">STJ Tecnología</span>
+                    </div>
+                    <p class="text-slate-400 max-w-sm mx-auto md:mx-0">
+                        Ataliva Roca 91, Junín, Buenos Aires.<br>
+                        Tu taller de confianza con laboratorio propio.
+                    </p>
+                    <div class="flex flex-col gap-2 text-slate-400">
+                        <p><i data-lucide="clock" class="inline w-4 h-4 text-blue-500"></i> Lun a Vie: 08:00 - 12:00 / 16:00 - 20:00</p>
+                        <p><i data-lucide="phone" class="inline w-4 h-4 text-blue-500"></i> WhatsApp: 0236 453-8426</p>
+                    </div>
+                    <div class="flex gap-4 justify-center md:justify-start pt-4">
+                        <a href="https://instagram.com/stjtecnologia" class="bg-slate-800 p-3 rounded-full hover:bg-pink-600 hover:text-white transition-all text-slate-400" aria-label="Instagram">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="https://wa.me/5492364538426" class="bg-slate-800 p-3 rounded-full hover:bg-green-600 hover:text-white transition-all text-slate-400" aria-label="WhatsApp">
+                            <i data-lucide="message-circle" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="w-full h-64 bg-slate-900 rounded-xl overflow-hidden border border-slate-700 relative shadow-xl">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Ataliva+Roca+91,+Junín,+Buenos+Aires&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        frameborder="0" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        aria-hidden="false" 
+                        tabindex="0">
+                    </iframe>
+                </div>
+            </div>
+            <p class="text-slate-600 text-sm text-center border-t border-slate-900 pt-8">&copy; 2026 STJ Tecnología. Hecho en Junín.</p>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        lucide.createIcons();
+
+        // Control de Páginas (SPA)
+        function showPlanes() {
+            document.getElementById('landing-view').classList.add('hidden');
+            document.getElementById('planes-view').classList.remove('hidden');
+            document.getElementById('planes-view').scrollIntoView();
+        }
+
+        function showHome() {
+            document.getElementById('planes-view').classList.add('hidden');
+            document.getElementById('landing-view').classList.remove('hidden');
+            window.scrollTo(0, 0);
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Navbar efecto vidrio
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                navbar.classList.add('glass-nav', 'py-3');
+                navbar.classList.remove('py-5', 'bg-transparent');
+            } else {
+                navbar.classList.remove('glass-nav', 'py-3');
+                navbar.classList.add('py-5', 'bg-transparent');
+            }
+        });
+
+        // Menú Móvil
+        const menuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenu.classList.toggle('flex');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenu.classList.remove('flex');
+            });
+        });
+    </script>
+</body>
+</html>
