@@ -3,28 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- ==========================================================================
-         ESPACIO PARA GOOGLE ANALYTICS
-         Instrucción: Cuando tengas tu código de Google Analytics (empieza con <script async...),
-         borrá este comentario y pegalo acá abajo 👇
+         GOOGLE ANALYTICS (GA4) - CONFIGURACIÓN ACTIVA
          ========================================================================== -->
     
-    <!-- ACÁ VA TU CÓDIGO DE ANALYTICS -->
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9LZLLT8N12"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9LZLLT8N12');
+    </script>
 
     <!-- ========================================================================== -->
 
-    <!-- SEO OPTIMIZADO -->
-    <title>STJ Tecnología | Servicio Técnico Especializado en Junín</title>
-    <meta name="description" content="Servicio técnico con 15 años de experiencia en Junín. Laboratorio propio de electrónica. Reparación de PC, Notebooks y Consolas. Planes de mantenimiento para empresas.">
-    <meta name="keywords" content="reparación pc junin, arreglo notebooks, servicio técnico apple junin, consolas, laboratorio electronica junin, stj tecnologia, ataliva roca 91, mantenimiento empresas">
-    <meta name="robots" content="index, follow">
+    <!-- SEO OPTIMIZADO: TÍTULO Y DESCRIPCIÓN PARA GOOGLE -->
+    <title>STJ Tecnología | Servicio Técnico PC y Notebooks en Junín</title>
+    <meta name="description" content="¿Tu PC no enciende o anda lenta? Servicio técnico especializado en Junín. Reparación de Notebooks, Consolas y Electrónica. Laboratorio propio en Ataliva Roca 91.">
     
-    <!-- Open Graph -->
-    <meta property="og:title" content="STJ Tecnología - Servicio Técnico Profesional">
-    <meta property="og:description" content="Recuperamos tu equipo en Junín. Laboratorio propio y 15 años de experiencia. Diagnóstico especializado.">
+    <!-- PALABRAS CLAVE (KEYWORDS) - AMPLIADO PARA PROBLEMAS COMUNES -->
+    <meta name="keywords" content="reparación pc junin, arreglo notebooks, servicio técnico apple junin, consolas ps4 ps5, laboratorio electronica junin, stj tecnologia, ataliva roca 91, mantenimiento empresas, se me apago la pc, pantalla azul, cambio de pantalla notebook, pc lenta, instalar windows junin, limpieza pc gamer, servicio tecnico impresoras junin, recuperar datos disco rigido">
+    
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="STJ Tecnología">
+    
+    <!-- GEO-ETIQUETAS (Para búsquedas locales "cerca de mí") -->
+    <meta name="geo.region" content="AR-B" />
+    <meta name="geo.placename" content="Junín" />
+    <meta name="geo.position" content="-34.5838;-60.9433" />
+    <meta name="ICBM" content="-34.5838, -60.9433" />
+
+    <!-- Open Graph (Cómo se ve en WhatsApp/Facebook) -->
+    <meta property="og:title" content="STJ Tecnología - ¿Problemas con tu PC? Te ayudamos.">
+    <meta property="og:description" content="Servicio técnico especializado en Junín. Recuperamos tu equipo rápido y con garantía. Hacé clic para pedir turno.">
     <meta property="og:image" content="logo.jpeg">
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.stjtecnologia.com.ar">
     
     <!-- Datos Estructurados (Schema.org) -->
     <script type="application/ld+json">
@@ -81,6 +98,7 @@
             <div class="hidden md:flex items-center gap-6">
                 <button onclick="showHome(); scrollToSection('servicios')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Servicios</button>
                 <button onclick="showHome(); scrollToSection('laboratorio')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Laboratorio</button>
+                <button onclick="showHome(); scrollToSection('opiniones')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Opiniones</button>
                 <button onclick="showHome(); scrollToSection('empresas')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Empresas</button>
                 <button onclick="showHome(); scrollToSection('ubicacion')" class="text-sm font-medium text-slate-300 hover:text-white transition-colors">Ubicación</button>
                 
@@ -103,6 +121,7 @@
         <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-slate-800 border-b border-slate-700 shadow-xl flex-col p-4 animate-fade-in">
             <button onclick="showHome(); scrollToSection('servicios')" class="mobile-link py-3 text-left text-slate-300 border-b border-slate-700/50">Servicios</button>
             <button onclick="showHome(); scrollToSection('laboratorio')" class="mobile-link py-3 text-left text-slate-300 border-b border-slate-700/50">Laboratorio</button>
+            <button onclick="showHome(); scrollToSection('opiniones')" class="mobile-link py-3 text-left text-slate-300 border-b border-slate-700/50">Opiniones</button>
             <button onclick="showHome(); scrollToSection('empresas')" class="mobile-link py-3 text-left text-slate-300 border-b border-slate-700/50">Empresas</button>
             <button onclick="showHome(); scrollToSection('ubicacion')" class="mobile-link py-3 text-left text-slate-300 mb-4">Ubicación</button>
             <a href="https://wa.me/5492364538426" target="_blank" class="w-full bg-blue-600 text-white px-4 py-3 rounded-lg text-center font-bold">Enviar WhatsApp</a>
@@ -245,12 +264,12 @@
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500/30 transition-colors">
                         <div class="flex gap-1 text-yellow-500 mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
-                        <p class="text-slate-300 italic mb-4">"Excelente atención. Llevé mi notebook que no prendía y me la devolvieron funcionando perfecto."</p>
+                        <p class="text-slate-300 italic mb-4">"Excelente atención. Llevé mi notebook que no prendía y me la devolvieron funcionando perfecto. Tavo me explicó todo el proceso."</p>
                         <p class="text-white font-bold text-sm">- Martín G.</p>
                     </div>
                     <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500/30 transition-colors">
                         <div class="flex gap-1 text-yellow-500 mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
-                        <p class="text-slate-300 italic mb-4">"Muy recomendable el cambio a disco sólido. La computadora vuela ahora."</p>
+                        <p class="text-slate-300 italic mb-4">"Muy recomendable el cambio a disco sólido. La computadora vuela ahora. Precio honesto y rapidez."</p>
                         <p class="text-white font-bold text-sm">- Laura S.</p>
                     </div>
                     <div class="bg-slate-800 p-6 rounded-xl border border-slate-700 hover:border-blue-500/30 transition-colors">
